@@ -1,10 +1,14 @@
 import React, {useReducer} from 'react';
 
+
+const incr = "increment";
+const decr = "decrement";
+
 const reducer = (state, action) => {
     switch (action.type) {
-        case 'increment':
+        case incr :
             return {count: state.count + 1};
-        case 'decrement':
+        case decr :
             return {count: state.count - 1};
         default:
             throw new Error();
@@ -15,7 +19,9 @@ function App() {
     const [state, dispatch] = useReducer(reducer, {count: 0});
   return (
     <>
-      <h1>To Dos</h1>
+      <h1>{state.count}</h1>
+        <button onClick={() => dispatch({type: incr})}>increase</button>
+        <button onClick={() => dispatch({type: decr})}>decrease</button>
     </>
   );
 }
