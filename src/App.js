@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useReducer} from 'react';
+
+const reducer = (state, action) => {
+    switch (action.type) {
+        case 'increment':
+            return {count: state.count + 1};
+        case 'decrement':
+            return {count: state.count - 1};
+        default:
+            throw new Error();
+    }
+}
 
 function App() {
+    const [state, dispatch] = useReducer(reducer, {count: 0});
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>To Dos</h1>
+    </>
   );
 }
 
