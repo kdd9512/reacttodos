@@ -20,8 +20,12 @@ function App() {
   return (
     <>
       <h1>{state.count}</h1>
-        <button onClick={() => dispatch({type: incr})}>increase</button>
-        <button onClick={() => dispatch({type: decr})}>decrease</button>
+
+        {/*<button onClick={() => dispatch({type: incr})}>increase</button>*/}
+        <button onClick={() => dispatch(incr)}>increase</button>
+
+        {/*<button onClick={() => dispatch({type: decr})}>decrease</button>*/}
+        <button onClick={() => dispatch(decr)}>decrease</button>
     </>
   );
 }
