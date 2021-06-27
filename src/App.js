@@ -1,31 +1,51 @@
-import React, {useReducer} from 'react';
+import React, {useReducer, useState} from 'react';
 
 
-const incr = "increment";
-const decr = "decrement";
+const initialState = {
+    toDos: []
+}
+
+const ADD = "increment";
 
 const reducer = (state, action) => {
-    switch (action.type) {
-        case incr :
+    switch (action) {
+        case ADD :
             return {count: state.count + 1};
-        case decr :
-            return {count: state.count - 1};
         default:
-            throw new Error();
+            return;
     }
 }
 
+
+
+
+
+
 function App() {
-    const [state, dispatch] = useReducer(reducer, {count: 0});
+    const [state, dispatch] = useReducer(reducer, initialState);
+    const [newTodo, setNewToDo] = useState();
+    const onSubmit = e => {
+        e.preventDefault();
+    }
+    const onChange = e => {
+        const {
+            target: {value}
+        } = e;
+        setNewToDo(value);
+    };
+
   return (
     <>
-      <h1>{state.count}</h1>
+      <h1>TODOS</h1>
+       <form onSubmit={onSubmit}>
+           <input
+               value={newTodo}
+               type="text"
+               placeholder="Write TO DO"
+               onChange={onChange}
+           />
+       </form>
 
-        {/*<button onClick={() => dispatch({type: incr})}>increase</button>*/}
-        <button onClick={() => dispatch(incr)}>increase</button>
-
-        {/*<button onClick={() => dispatch({type: decr})}>decrease</button>*/}
-        <button onClick={() => dispatch(decr)}>decrease</button>
     </>
   );
 }
