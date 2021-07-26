@@ -32,7 +32,8 @@ function App() {
     const [newTodo, setNewToDo] = useState("");
     const onSubmit = e => {
         e.preventDefault();
-        dispatch({type: ADD, payload: newTodo})
+        dispatch({type: ADD, payload: newTodo});
+        setNewToDo("");
     };
     const onChange = e => {
         const {
