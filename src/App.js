@@ -1,30 +1,6 @@
 import React, {useReducer, useState} from 'react';
 import {v4 as uuid} from "uuid";
-
-const initialState = {
-    toDos: []
-}
-
-const ADD = "increment";
-
-const DEL = "del"
-
-const reducer = (state, action) => {
-    switch (action.type) {
-        case ADD :
-            return {
-                toDos: [...state.toDos, {text: action.payload, id: uuid()}]
-            };
-        case DEL :
-            return {toDos: state.toDos.filter(toDo => {
-                    console.log(toDo.id, action.payload);
-                    return toDo.id !== action.payload;
-                })
-            };
-        default:
-            return;
-    }
-}
+import reducer, {ADD, DEL, initialState} from "reducer";
 
 
 function App() {
