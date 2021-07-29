@@ -11,11 +11,26 @@ const ToDosProvider = ({children}) => {
             {children}
         </ToDosContext.Provider>
     );
-}
+};
 
 export const useDispatch = () => {
     const {dispatch} = useContext(ToDosContext);
     return dispatch;
-}
+};
+
+export const useToDos = () => {
+    const {state:{toDos}} = useContext(ToDosContext);
+    return toDos;
+};
+
+export const useCompleted = () => {
+    const {state:{completed}} = useContext(ToDosContext);
+    return completed;
+};
+
+export const useState = () => {
+    const {state} = useContext(ToDosContext);
+    return state;
+};
 
 export default ToDosProvider;
