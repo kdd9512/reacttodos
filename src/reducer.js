@@ -27,9 +27,11 @@ const reducer = (state, action) => {
             };
 
         case EDIT :
-            return {
-
-            };
+            const eTarget = state.toDos.find(toDo => toDo.id === action.payload);
+            // return {
+            //     ...state,
+            //     toDos: state.toDos.
+            // };
 
         case COMPLETE :
             const target = state.toDos.find(toDo => toDo.id === action.payload);
