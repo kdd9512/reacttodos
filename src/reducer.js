@@ -28,10 +28,14 @@ const reducer = (state, action) => {
 
         case EDIT :
             const eTarget = state.toDos.find(toDo => toDo.id === action.payload);
-            // return {
-            //     ...state,
-            //     toDos: state.toDos.
-            // };
+            const edit = state.toDos.filter(toDo => toDo.id !== action.payload);
+            return {
+                ...state,
+                toDos: edit.concat({
+                    ...state,
+                    text: action.payload
+                })
+            };
 
         case COMPLETE :
             const target = state.toDos.find(toDo => toDo.id === action.payload);
